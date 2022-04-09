@@ -1,7 +1,19 @@
-import React from 'react';
-import menuData from '../data/menu-links.json';
+import React, { useEffect, useState } from 'react';
+import MenuLink from '../interfaces/menuLink';
 
 function Header() {
+  const [links, setLinks] = useState<MenuLink[]>([]);
+
+  useEffect(() => {
+    const getData = async () => {
+      const resp = await fetch(
+        'https://qbkagfkl8l.execute-api.us-east-1.amazonaws.com/Production/menuLinks',
+      );
+      const data = await resp.json();
+      setLinks(data);
+    };
+    getData();
+  }, []);
   return (
     <header id="intro">
       <article className="fullheight">
@@ -27,10 +39,10 @@ function Header() {
             </a>
           </div>
           <ul>
-            {menuData.map((x) => (
-              <li>
-                <a className={`info ${x.class}`} href={x.url}>
-                  {x.name}
+            {links.map((x: MenuLink) => (
+              <li key={x.href}>
+                <a className={`info ${x.class}`} href={x.href}>
+                  {x.text}
                 </a>
               </li>
             ))}

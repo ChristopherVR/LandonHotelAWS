@@ -1,6 +1,7 @@
 import React from 'react';
 import accessibilityData from '../data/accessibility.json';
 import serviceAndAmenitiesData from '../data/service-and-amenities.json';
+import Accesibility from '../interfaces/accesibility';
 
 function Hotel() {
   return (
@@ -45,8 +46,8 @@ function Hotel() {
             your stay comfortable, and your experience one-of-a-kind.
           </p>
           <ul>
-            {serviceAndAmenitiesData.map((x) => (
-              <li>{x}</li>
+            {serviceAndAmenitiesData.map((x: Accesibility) => (
+              <li key={x.name}>{x.name}</li>
             ))}
           </ul>
         </section>
@@ -58,8 +59,8 @@ function Hotel() {
             needs:
           </p>
           <ul>
-            {accessibilityData.map((x) => (
-              <li>{x}</li>
+            {accessibilityData.map((x: Accesibility) => (
+              <li key={x.name}>{x.name}</li>
             ))}
           </ul>
         </section>

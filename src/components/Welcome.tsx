@@ -1,13 +1,14 @@
 import React from 'react';
 import imagesData from '../data/welcome-images.json';
+import GalleryImage from '../interfaces/galleryImage';
 
 function Welcome() {
   return (
     <div className="scene" id="welcome">
       <article className="content">
         <div className="gallery">
-          {imagesData.map((x) => (
-            <img className={x.class} alt={x.alt} src={x.src}></img>
+          {imagesData.map((x: GalleryImage) => (
+            <img key={x.alt} className={x.class} alt={x.alt} src={x.src}></img>
           ))}
         </div>
         <h1>Welcome to the Landon&nbsp;Hotel</h1>
