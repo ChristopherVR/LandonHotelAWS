@@ -1,27 +1,27 @@
 [
   {
     "class": "info",
-    "url": "#hotelinfo",
-    "name": "info"
+    "href": "#hotelinfo",
+    "text": "info"
   },
   {
     "class": "rooms",
-    "url": "#rooms",
-    "name": "info"
+    "href": "#rooms",
+    "text": "info"
   },
   {
     "class": "dining",
-    "url": "#dining",
-    "name": "rooms"
+    "href": "#dining",
+    "text": "rooms"
   },
   {
     "class": "events",
-    "url": "#events",
-    "name": "events"
+    "href": "#events",
+    "text": "events"
   },
   {
     "class": "attractions",
-    "url": "#attractions",
-    "name": "attractions"
+    "href": "#attractions",
+    "text": "attractions"
   }
 ]
