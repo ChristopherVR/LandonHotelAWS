@@ -1,13 +1,24 @@
-import React from 'react';
-import imagesData from '../data/welcome-images.json';
+import React, { useEffect, useState } from 'react';
 import GalleryImage from '../interfaces/galleryImage';
+import config from '../config/awsConfig';
 
 function Welcome() {
+  const [images, setImages] = useState<GalleryImage[]>([]);
+
+  useEffect(() => {
+    const getData = async () => {
+      const resp = await fetch(`${config.url}galleries`);
+      const data = await resp.json();
+      setImages(data);
+    };
+    getData();
+  }, []);
+
   return (
     <div className="scene" id="welcome">
       <article className="content">
         <div className="gallery">
-          {imagesData.map((x: GalleryImage) => (
+          {images.map((x: GalleryImage) => (
             <img key={x.alt} className={x.class} alt={x.alt} src={x.src}></img>
           ))}
         </div>

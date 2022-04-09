@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import config from '../config/awsConfig';
 import MenuLink from '../interfaces/menuLink';
 
 function Header() {
@@ -6,9 +7,7 @@ function Header() {
 
   useEffect(() => {
     const getData = async () => {
-      const resp = await fetch(
-        'https://qbkagfkl8l.execute-api.us-east-1.amazonaws.com/Production/menuLinks',
-      );
+      const resp = await fetch(`${config.url}menuLinks`);
       const data = await resp.json();
       setLinks(data);
     };

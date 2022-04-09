@@ -1,9 +1,28 @@
-import React from 'react';
-import accessibilityData from '../data/accessibility.json';
-import serviceAndAmenitiesData from '../data/service-and-amenities.json';
+import React, { useEffect, useState } from 'react';
+import config from '../config/awsConfig';
 import Accesibility from '../interfaces/accesibility';
 
 function Hotel() {
+  const [services, setServices] = useState<Accesibility[]>([]);
+  const [accessibilities, setAccessibilities] = useState<Accesibility[]>([]);
+  useEffect(() => {
+    const getData = async (url: string) => {
+      const resp = await fetch(url);
+      const data = await resp.json();
+      return data;
+    };
+    const getServices = async () => {
+      const res = await getData(`${config.url}services`);
+      setServices(res);
+    };
+    const getAccessibilities = async () => {
+      const res = await getData(`${config.url}accessibilities`);
+      setAccessibilities(res);
+    };
+    getServices();
+    getAccessibilities();
+  }, []);
+
   return (
     <div className="scene" id="hotelinfo">
       <article className="heading">
@@ -46,7 +65,7 @@ function Hotel() {
             your stay comfortable, and your experience one-of-a-kind.
           </p>
           <ul>
-            {serviceAndAmenitiesData.map((x: Accesibility) => (
+            {services.map((x: Accesibility) => (
               <li key={x.name}>{x.name}</li>
             ))}
           </ul>
@@ -59,7 +78,7 @@ function Hotel() {
             needs:
           </p>
           <ul>
-            {accessibilityData.map((x: Accesibility) => (
+            {accessibilities.map((x: Accesibility) => (
               <li key={x.name}>{x.name}</li>
             ))}
           </ul>
