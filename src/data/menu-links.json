@@ -1,0 +1,27 @@
+[
+  {
+    "class": "info",
+    "url": "#hotelinfo",
+    "name": "info"
+  },
+  {
+    "class": "rooms",
+    "url": "#rooms",
+    "name": "info"
+  },
+  {
+    "class": "dining",
+    "url": "#dining",
+    "name": "rooms"
+  },
+  {
+    "class": "events",
+    "url": "#events",
+    "name": "events"
+  },
+  {
+    "class": "attractions",
+    "url": "#attractions",
+    "name": "attractions"
+  }
+]
